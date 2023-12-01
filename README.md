@@ -1,5 +1,5 @@
 # ScoreTrackerPlugin
-An [AssettoServer](https://github.com/compujuckel/AssettoServer) plugin that will track overtake scores, drift scores, and lap times. Each player and their top score/lap time will be stored in the root folder of your server under `score-tracker`.
+An [AssettoServer](https://github.com/compujuckel/AssettoServer) plugin that will track overtake scores, drift scores, and lap times. Each player and their top score/lap time will be stored in the root folder of your server under `score-tracker`. The plugin will then display all those entries on your servers web page at `http://{ip}:{port}/scores` or `http://{ip}:{port}/laptimes`.
 
 #### Note: While this plugin does work and serve its functionality, some clients seem to not send a packet but rather encode it into a chat message that the server can still see, this plugin just doesn't know about that chat message yet. Lap times aren't fully implemented, it seemed to work on Nordschleife so I stopped there. Should any problems arrise I can do my best to fix them.
 
@@ -28,7 +28,7 @@ BroadcastMessages: true
 ### Lua Script Configuration (Overtake/Drift)
 
 Add this `OnlineEvent` to your Lua script
-##### Keep the structure the same otherwise the plugin won't capture any scores. For drift scores rename the key to `driftScoreEnd`.
+##### Keep the structure the same otherwise the plugin won't capture any scores. For drift scores just rename the key to `driftScoreEnd`.
 ```lua
 local msg = ac.OnlineEvent({
     ac.StructItem.key("overtakeScoreEnd"),
