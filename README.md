@@ -42,6 +42,6 @@ Send a message using the `OnlineEvent`
 msg{ Score = personalBest, Multiplier = comboMeter, Car = ac.getCarName(0) }
 ```
 
-### Screenshots
+### Example usage screenshots
 ![alt text](https://i.imgur.com/yVbRKyN.png "Overtake scores being used in a Discord.py bot")
 ![alt text](https://i.imgur.com/wrKlVJd.png "Lap times being used in a Discord.py bot")
