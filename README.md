@@ -1,2 +1,43 @@
 # ScoreTrackerPlugin
-An AssettoServer plugin that will track overtake and drift scores, and lap times
+An [AssettoServer](https://github.com/compujuckel/AssettoServer) plugin that will track overtake scores, drift scores, and lap times. Each player and their top score/lap time will be stored in the root folder of your server under `score-tracker`.
+
+#### Note: While this plugin does work and serve its functionality, some clients seem to not send a packet but rather encode it into a chat message that the server can still see, this plugin just doesn't know about that chat message yet. Lap times aren't fully implemented, it seemed to work on Nordschleife so I stopped there. Should any problems arrise I can do my best to fix them.
+
+### Server Configuration
+Enable CSP client messages in your `extra_cfg.yml`
+```YAML
+EnableClientMessages: true
+```
+
+Enable the plugin in your `extra_cfg.yml`
+```YAML
+EnablePlugins:
+- ScoreTrackerPlugin
+```
+
+Add the plugin configuration to the bottom of your `extra_cfg.yml`
+```YAML
+---
+!ScoreTrackerConfiguration
+# Whether to listen for overtake score, drift score, or timed laps. 0 = overtake score, 1 = drift score, 2 = timed laps
+ServerType: 1
+# Depending on 'ServerType', the server sends a message in chat for each new personal best overtake score, drift score, or lap time.
+BroadcastMessages: true
+```
+
+### Lua Script Configuration (Overtake/Drift)
+
+Add this `OnlineEvent` to your Lua script
+##### Keep the structure the same otherwise the plugin won't capture any scores. For drift scores rename the key to `driftScoreEnd`.
+```lua
+local msg = ac.OnlineEvent({
+    ac.StructItem.key("overtakeScoreEnd"),
+    Score = ac.StructItem.int64(),
+    Multiplier = ac.StructItem.int32(),
+    Car = ac.StructItem.string(64),
+})
+```
+Send a message using the `OnlineEvent`
+```lua
+msg{ Score = personalBest, Multiplier = comboMeter, Car = ac.getCarName(0) }
+```
