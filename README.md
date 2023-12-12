@@ -1,7 +1,7 @@
 # ScoreTrackerPlugin
 An [AssettoServer](https://github.com/compujuckel/AssettoServer) plugin that will track overtake scores, drift scores, and lap times. Each player and their top score/lap time will be stored in the root folder of your server under `score-tracker`. The plugin will then display all those entries in json content on your servers web page at `http://{ip}:{port}/scores` or `http://{ip}:{port}/laptimes`. Which can be access by Discord bots, etc.
 
-#### Note: While this plugin does work and serve its functionality, some clients seem to not send a packet but rather encode it into a chat message that the server can still see, this plugin just doesn't know about that chat message yet. Lap times aren't fully implemented, it seemed to work on Nordschleife so I stopped there. Should any problems arrise I can do my best to fix them.
+#### Note: Lap times aren't fully implemented, it seemed to work on Nordschleife so I stopped there. Should any problems arrise I can do my best to fix them.
 
 ### Server Configuration
 Enable CSP client messages in your `extra_cfg.yml`
