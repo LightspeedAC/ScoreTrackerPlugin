@@ -59,7 +59,7 @@ public sealed class ScoreTrackerSession
 
     public void OnRemove()
     {
-        if (!_client.HasSentFirstUpdate || !_client.HasPassedChecksum)
+        if (!_client.HasSentFirstUpdate || _client.ChecksumStatus != ChecksumStatus.Succeeded)
         {
             return;
         }
