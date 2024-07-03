@@ -1,5 +1,5 @@
 # ScoreTrackerPlugin
-An [AssettoServer](https://github.com/compujuckel/AssettoServer) plugin that will track overtake scores, drift scores, and lap times. Each player and their top score/lap time will be stored in the root folder of your server under `score-tracker`. The plugin will then display all those entries in json content on your servers web page at `http://{ip}:{port}/scores` or `http://{ip}:{port}/laptimes`. Which can be access by Discord bots, etc.
+An [AssettoServer](https://github.com/compujuckel/AssettoServer) plugin that will track overtake scores, drift scores, and lap times. Each player and their top score/lap time will be stored in the root folder of your server under `score-tracker`. The plugin will then display all those entries on your server's web page at `http://{ip}:{port}/scores` or `http://{ip}:{port}/laptimes`, which can be accessed by Discord bots, etc.
 
 If you're going to track overtake or drift scores, you'll need a Lua script which can be found [here](https://www.patreon.com/JBoondock).
 
