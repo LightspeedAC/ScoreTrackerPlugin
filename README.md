@@ -1,7 +1,8 @@
 # ScoreTrackerPlugin
 An [AssettoServer](https://github.com/compujuckel/AssettoServer) plugin that will track overtake scores, drift scores, and lap times. Each player and their top score/lap time will be stored in the root folder of your server under `score-tracker`. The plugin will then display all those entries in json content on your servers web page at `http://{ip}:{port}/scores` or `http://{ip}:{port}/laptimes`. Which can be access by Discord bots, etc.
 
-#### Note: Lap times aren't fully implemented, it seemed to work on Nordschleife so I stopped there. Should any problems arrise I can do my best to fix them.
+If you're going to track overtake or drift scores, you'll need a Lua script which can be found [here](https://www.patreon.com/JBoondock).
+
 
 ### Server Configuration
 Enable CSP client messages in your `extra_cfg.yml`
@@ -28,7 +29,7 @@ BroadcastMessages: true
 ### Lua Script Configuration (Overtake/Drift)
 
 Add this `OnlineEvent` to your Lua script
-##### Keep the structure the same otherwise the plugin won't capture any scores. For drift scores just rename the key to `driftScoreEnd`.
+##### Keep the structure the same otherwise this plugin won't capture any scores. For drift scores just rename the key to `driftScoreEnd`.
 ```lua
 local msg = ac.OnlineEvent({
     ac.StructItem.key("overtakeScoreEnd"),
@@ -37,7 +38,7 @@ local msg = ac.OnlineEvent({
     Car = ac.StructItem.string(64),
 })
 ```
-Send a message using the `OnlineEvent`
+Send a message from your script using the `OnlineEvent` (to be captured by this plugin)
 ```lua
 msg{ Score = personalBest, Multiplier = comboMeter, Car = ac.getCarName(0) }
 ```
